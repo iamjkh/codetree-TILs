@@ -22,7 +22,7 @@ int main(void)
 	
 	int maxn = 0;
 
-	unordered_map<int, unordered_map<int, int>> a;
+	unordered_map<int, vector<int>> a;
 	a.reserve(6);
 
 	for (int j = 0; j < n; j++)
@@ -30,25 +30,41 @@ int main(void)
 		for (int i = 0; i < n; i++)
 		{
 			int b = v[j][i];
-			a[j][b]++;
-			a[i+n][b]++;
+			a[j].push_back(b);
+			a[i+n].push_back(b);
 		}
 	}
 
-	int nhappy = 0;
-	for (int i = 0; i < n*2; i++)
+	int ihappy = 0;
+	for (int i = 0; i < 2 * n; i++)
 	{
-		for (auto& k : a[i])
+		int nhappy = 0;
+		for (int j = 0; j < a[i].size(); j++)
 		{
-			if (k.second == m)
+			if (m == 1)
 			{
-				nhappy++;
+				nhappy = 1;
 				break;
 			}
+			else
+			{
+				if (j == 0)
+					continue;
+				
+				if (a[i][j - 1] - a[i][j] == 0)
+					nhappy++;
+				else
+					nhappy = 0;
+				
+				if (nhappy >= m)
+					break;
+			}
 		}
+		if (nhappy > 0)
+			ihappy++;
 	}
 
-	cout << nhappy;
+	cout << ihappy;
 
 	return 0;
 }
