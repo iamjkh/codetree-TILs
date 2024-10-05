@@ -52,7 +52,12 @@ int main(void)
 					continue;
 				
 				if (a[i][j - 1] - a[i][j] == 0)
-					nhappy++;
+				{
+					if (nhappy == 0)
+						nhappy = 2;
+					else
+						nhappy++;
+				}
 				else
 					nhappy = 0;
 				
@@ -60,7 +65,7 @@ int main(void)
 					break;
 			}
 		}
-		if (nhappy > 0)
+		if (nhappy >= m)
 			ihappy++;
 	}
 
