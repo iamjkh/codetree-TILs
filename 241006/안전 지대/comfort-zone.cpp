@@ -82,7 +82,7 @@ int main(void)
 	int maxi = 1;
 	for (int k = maxk - 1; k >= 1; k--)
 	{
-		if (maxa < p[k])
+		if (maxa <= p[k])
 		{
 			maxa = p[k];
 			maxi = k;
