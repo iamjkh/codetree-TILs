@@ -79,7 +79,7 @@ int main(void)
 	}
 
 	int maxa = 0;
-	int maxi = 0;
+	int maxi = 1;
 	for (int k = maxk - 1; k >= 1; k--)
 	{
 		if (maxa < p[k])
