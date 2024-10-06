@@ -48,7 +48,7 @@ int main(void)
 
 	//freopen("input.txt", "r", stdin);
 
-	cin >> n >> m;
+	cin >> m >> n;
 
 	g = vector<vector<int>>(n, vector<int>(m, 0));
 	v = vector<vector<int>>(n, vector<int>(m, 0));
