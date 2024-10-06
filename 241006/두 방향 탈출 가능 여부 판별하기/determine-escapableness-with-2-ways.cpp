@@ -18,7 +18,7 @@ bool isOK = false;
 
 void dfs(Point& c)
 {
-	if (c.y == m - 1 && c.x == n-1)
+	if (c.y == n - 1 && c.x == m-1)
 	{
 		isOK = true;
 	}
@@ -30,7 +30,7 @@ void dfs(Point& c)
 		next.y = c.y + d[i].y;
 		next.x = c.x + d[i].x;
 
-		if (next.y < 0 || next.y >= m || next.x < 0 || next.x >= n)
+		if (next.y < 0 || next.y >= n || next.x < 0 || next.x >= m)
 			continue;
 
 		if (v[next.y][next.x] == false && g[next.y][next.x] == 1)
@@ -48,14 +48,14 @@ int main(void)
 
 	//freopen("input.txt", "r", stdin);
 
-	cin >> m >> n;
+	cin >> n >> m;
 
 	g = vector<vector<int>>(n, vector<int>(m, 0));
 	v = vector<vector<int>>(n, vector<int>(m, 0));
 
-	for (int j = 0; j < m; j++)
+	for (int j = 0; j < n; j++)
 	{
-		for (int i = 0; i < n; i++)
+		for (int i = 0; i < m; i++)
 		{
 			cin >> g[j][i];
 		}
