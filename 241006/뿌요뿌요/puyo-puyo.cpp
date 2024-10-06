@@ -6,7 +6,7 @@ using namespace std;
 int n;
 vector<vector<int>> g;
 vector<vector<int>> v;
-vector<int> p;
+vector<vector<int>> p;
 
 struct Point
 {
@@ -74,19 +74,22 @@ int main(void)
 				int k = 0;
 				if (v[j][i] == false && g[j][i] == kk)
 					dfs(c, kk, k);
-
-				p[kk] = max(p[kk], k);
+				if (k > 0)
+					p[kk].push_back(k);
 			}
 		}
 	}
 
 	int maxa = 0;
 	int explosion = 0;
-	for (int k = maxk - 1; k >= 1; k--)
+	for (int k = 1; k<=maxk; k++)
 	{
-		maxa = max(maxa, p[k]);
-		if (p[k] >= 4)
-			explosion++;
+		for (auto& pp : p[k])
+		{
+			maxa = max(maxa, pp);
+			if (pp >= 4)
+				explosion++;
+		}
 	}
 
 	cout << explosion << " " << maxa;
