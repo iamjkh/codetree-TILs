@@ -10,7 +10,7 @@ int n, m;
 
 void dfs(int c)
 {
-	for (int i = 1; i < g[c].size(); i++)
+	for (int i = 0; i < g[c].size(); i++)
 	{
 		int curr = g[c][i];
 		if (!visited[curr])
