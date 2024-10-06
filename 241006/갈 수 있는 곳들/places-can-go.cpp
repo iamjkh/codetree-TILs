@@ -15,7 +15,9 @@ struct Point
 
 Point d[4] = { {0, 1}, {1, 0}, {-1, 0}, {0, -1} };
 
-void bfs(Point c, int& blob)
+int blob = 0;
+
+void bfs(Point c)
 {
 	deque<Point> q;
 
@@ -27,10 +29,18 @@ void bfs(Point c, int& blob)
 		int x = current.x;
 		int y = current.y;
 
+		if (y < 0 || y >= n || x < 0 || x >= n)
+			continue;
+
+		if (v[y][x] == true)
+			continue;
+
 		v[y][x] = true;
 
-		if (g[y][x] == 0)
-			blob++;
+		if (g[y][x] == 1)
+			continue;
+
+		++blob;
 
 		for (int i = 0; i < 4; i++)
 		{
@@ -41,7 +51,7 @@ void bfs(Point c, int& blob)
 				continue;
 
 			if (g[ny][nx] == 0 && v[ny][nx] == false)
-				bfs({ ny, nx }, blob);
+				q.push_back({ ny, nx });
 		}
 	}
 }
@@ -58,7 +68,7 @@ int main(void)
 	cin >> n >> k;
 
 	g = vector<vector<int>>(n, vector<int>(n, 0));
-	v = vector<vector<bool>>(n, vector<bool>(n, 0));
+	v = vector<vector<bool>>(n, vector<bool>(n, false));
 
 	for (int j = 0; j < n; j++)
 	{
@@ -68,13 +78,13 @@ int main(void)
 		}
 	}
 
-	int blob = 0;
 	for (int i = 0; i < k; i++)
 	{
 		int x, y;
-		cin >> x >> y;
+		cin >> y >> x;
+		
 		if(v[y-1][x-1] == false)
-			bfs({ y-1, x-1 }, blob);
+			bfs({ y-1, x-1 });
 	}
 
 	cout << blob;
