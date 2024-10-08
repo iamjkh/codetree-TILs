@@ -9,6 +9,8 @@ int main() {
         cout << "book";
     else if(n==1000)
         cout << "mask";
+    else
+        cout << "no";
 
     return 0;
 }
