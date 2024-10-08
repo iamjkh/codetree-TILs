@@ -5,10 +5,9 @@ int main() {
     int n;
     cin >> n;
 
+    cout << n*n << "\n";
     if(n*n < 5)
         cout << "tiny";
-    else
-        cout << n*n;
 
 
     return 0;
