@@ -5,14 +5,14 @@ struct person
 {
     int age;
     string sex;
-}
+};
 
-void is_adult(person& p)
+int is_adult(person& p)
 {
     if(p.age >= 19 && p.sex=="M")
-        cout << 1;
+        return 1;
     else
-        cout << 0;
+        return 0;
 }
 
 int main() {
@@ -21,8 +21,13 @@ int main() {
     cin >> a.age >> a.sex;
     cin >> b.age >> b.sex;
 
-    is_adult(a);
-    is_adult(b);
+    int ar = is_adult(a);
+    int br = is_adult(b);
+
+    if(ar || br)
+        cout << 1 << "\n";
+    else
+        cout << 0 << "\n";
 
     return 0;
 }
