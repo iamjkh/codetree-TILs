@@ -23,7 +23,7 @@ Point bfs(const Point& c)
 
     int c_val = g[c.y][c.x];
     Point min_point = c;
-    int max_val = 1;
+    int max_val = 0;
     while (!q.empty())
     {
         Point current = q.front(); q.pop_front();
@@ -39,16 +39,18 @@ Point bfs(const Point& c)
             {
                 min_point.y = y;
                 min_point.x = x;
+                max_val = max(max_val, g[min_point.y][min_point.x]);
             }
-            max_val = max(max_val, min(g[y][x], c_val-1));
             if(min_point.y > y && max_val == g[y][x])
             {
                 min_point.y = y;
                 min_point.x = x;
+                max_val = max(max_val, g[min_point.y][min_point.x]);
             }
             if(min_point.y == y && min_point.x > x && max_val == g[y][x])
             {
                 min_point.x = x;
+                max_val = max(max_val, g[min_point.y][min_point.x]);
             }
         }
         
