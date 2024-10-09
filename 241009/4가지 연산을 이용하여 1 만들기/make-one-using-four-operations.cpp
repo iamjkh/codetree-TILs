@@ -14,12 +14,14 @@ struct Op
 };
 
 int min_op = 1e9;
+int max_c;
 
 void bfs(int in)
 {
     deque<Op> q;
     q.push_back({in, 0});
 
+    max_c = in + 3;
 
     while(!q.empty())
     {
@@ -32,7 +34,8 @@ void bfs(int in)
         if(c.c > 1 && min_op > c.n +1)
         {
             q.push_back({c.c-1, c.n+1});
-            q.push_back({c.c+1, c.n+1});
+            if(max_c > c.c+1)
+                q.push_back({c.c+1, c.n+1});
             if(c.c%2 == 0)
                 q.push_back({c.c/2, c.n+1});
             if(c.c%3 == 0)
