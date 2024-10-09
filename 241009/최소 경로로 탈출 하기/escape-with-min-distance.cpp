@@ -84,6 +84,7 @@ int main(void)
     }
     v = vector<vector<bool>>(n, vector<bool>(m, false));
     s = vector<vector<int>>(n, vector<int>(m, 0));
+    s[n-1][m-1] = -1;
 
     Point start = {0, 0};
 
