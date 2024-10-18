@@ -9,7 +9,7 @@ int main() {
     if(x3 >= x1 && x2 >=x3 && x4 > x3)
         cout << "intersecting";
     else
-        cout << "nonintersectiing";
+        cout << "nonintersecting";
 
     return 0;
 }
